@@ -125,7 +125,7 @@ namespace mn {
             throw SerialFillerException(std::string() + __PRETTY_FUNCTION__ + " called but subscriber ID of " + std::to_string(subscriberId) + " was not found.");
         }
 
-        void SerialFiller::UnsubscribeAll() noexcept {
+        void SerialFiller::UnsubscribeAll() no {
 
             std::unique_lock<std::mutex> lock(classMutex_, std::defer_lock);
             if(threadSafetyEnabled_)

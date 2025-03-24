@@ -11,6 +11,7 @@
 // User includes
 #include "SerialFiller/CobsTranscoder.hpp"
 #include "SerialFiller/Exceptions/CobsDecodingFailed.hpp"
+#include <cassert>
 
 namespace mn {
     namespace SerialFiller {
@@ -19,7 +20,6 @@ namespace mn {
         void CobsTranscoder::Encode(
                 const ByteArray &rawData,
                 ByteArray &encodedData) {
-
             int startOfCurrBlock = 0;
             uint8_t numElementsInCurrBlock = 0;
 
@@ -30,7 +30,6 @@ namespace mn {
             encodedData.push_back(0x00);
 
             while (it != rawData.end()) {
-
                 if (*it == 0x00) {
                     // Save the number of elements before the next 0x00 into
                     // the output
@@ -89,7 +88,7 @@ namespace mn {
                     uint8_t byteOfData = encodedData[encodedDataPos];
                     if (byteOfData == 0x00) {
                         decodedData.clear();
-                        throw CobsDecodingFailed(encodedData);
+                        assert(false && "Unimplemented decode failure handling");
                     }
 
                     decodedData.push_back(encodedData[encodedDataPos]);
