@@ -38,7 +38,7 @@ namespace mn {
             /// \details    Provided encodedData is expected to be a single, valid COBS encoded packet. If not, method
             ///             will return #DecodeStatus::ERROR_ZERO_BYTE_NOT_EXPECTED.
             ///             #decodedData is emptied of any pre-existing data. If the decode fails, decodedData is left empty.
-            static void Decode(const ByteArray &encodedData, ByteArray &decodedData);
+            static int Decode(const ByteArray &encodedData, ByteArray &decodedData);
 
         };
     } // namespace SerialFiller

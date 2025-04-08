@@ -70,7 +70,7 @@ namespace mn {
             encodedData.push_back(0x00);
         }
 
-        void CobsTranscoder::Decode(
+        int CobsTranscoder::Decode(
                 const ByteArray &encodedData,
                 ByteArray &decodedData) {
 
@@ -88,7 +88,7 @@ namespace mn {
                     uint8_t byteOfData = encodedData[encodedDataPos];
                     if (byteOfData == 0x00) {
                         decodedData.clear();
-                        assert(false && "Unimplemented decode failure handling");
+                        return -1;
                     }
 
                     decodedData.push_back(encodedData[encodedDataPos]);
@@ -109,6 +109,8 @@ namespace mn {
                     decodedData.push_back(0x00);
                 }
             }
+
+            return 0;
         }
     } // namespace SerialFiller
 } // namespace mn
