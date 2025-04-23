@@ -76,7 +76,7 @@ namespace mn {
 
             decodedData.clear();
 
-            int encodedDataPos = 0;
+            size_t encodedDataPos = 0;
 
             while (encodedDataPos < encodedData.size()) {
 
